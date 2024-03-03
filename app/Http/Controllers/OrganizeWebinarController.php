@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Factories\OrganizeWebinarCommandFactory;
 use App\Models\Webinar;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -14,17 +15,8 @@ class OrganizeWebinarController extends Controller
     {
         try {
 
-            $startDate = $request->get('date');
-            $theme = $request->get('theme');
-            $link = $request->get('link');
-            $nbParticipants = $request->get('nbParticipants');
 
-            if (empty($startDate) || empty($theme) || empty($link) || empty($nbParticipants)) {
-                throw new InvalidArgumentException('La date, le thème et le lien sont obligatoires !');
-            }
-
-            $startDate = date_create_immutable($startDate);
-            $currentDate = date_create_immutable(date('Y-m-d H:i:s'));
+            $command = OrganizeWebinarCommandFactory::buildFromRequest($request);
 
             if (date_diff($startDate, $currentDate)->days < 3) {
                 throw new InvalidArgumentException('Un webinaire ne peut être programmé que 03 jours à l\'avance !');
