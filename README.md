@@ -4,6 +4,7 @@
 
 - Créer un compte (Nom, Prénom, Email ,Password)
 - Login
+- Logout
 - Envoie d'email de bienvenue
 
 ## Organisation 
@@ -24,6 +25,8 @@
   - Action reservée à l'organisateur
   - Au moins 03 jours à l'avance
   - Envoyer un mail à tous les participants
+
+## Participation
 - Réserver sa place
   - Vérifier le nombre de participants
   - Vérifier qu'on ne participe pas déjà
